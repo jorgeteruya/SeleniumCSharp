@@ -29,7 +29,6 @@ namespace AutomationSpecFlow.Steps.StepsDefinition
         public void WhenIInputTheUser(string user)
         {
             Driver.SendKeys(By.Id("user-name"), user);
-            
         }
 
         [When(@"input (.*)")]
