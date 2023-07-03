@@ -7,10 +7,10 @@ Scenario Outline: LoginValidation
 	Given I access the SauceLabs website
 	When I input the <User>
 	And input <password>
-	Then the home page will load
+	Then the home page will load if the user have access
 
 Examples:
-	| User          | password     |
-	| standard_user | secret_sauce |
-	#| problem_user    | secret_sauce    |
-	#| locked_out_user | secret_sauce    |
+	| User            | password     | can Access |
+	| standard_user   | secret_sauce | True       |
+	| problem_user    | secret_sauce | True       |
+	| locked_out_user | secret_sauce | False      |

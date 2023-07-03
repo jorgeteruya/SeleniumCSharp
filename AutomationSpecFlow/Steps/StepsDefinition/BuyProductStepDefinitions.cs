@@ -1,7 +1,7 @@
 using System;
 using TechTalk.SpecFlow;
 
-namespace AutomationSpecFlow.Steps
+namespace AutomationSpecFlow.Steps.StepsDefinition
 {
     [Binding]
     public class BuyProductStepDefinitions

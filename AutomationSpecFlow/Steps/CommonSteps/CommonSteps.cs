@@ -3,17 +3,17 @@ using OpenQA.Selenium;
 using System.Globalization;
 using TestFramework;
 
-namespace AutomationSpecFlow.Steps
+namespace AutomationSpecFlow.Steps.CommonSteps
 {
-    
+
     [Binding]
     public class CommonSteps : BaseSteps
     {
 
         private IConfiguration _configuration { get; set; }
 
-        public CommonSteps(BrowserHost browserHost, FeatureContext featureContext, IConfiguration configuration) : base(browserHost, featureContext) 
-        { 
+        public CommonSteps(BrowserHost browserHost, FeatureContext featureContext, IConfiguration configuration) : base(browserHost, featureContext)
+        {
             _configuration = configuration;
         }
 

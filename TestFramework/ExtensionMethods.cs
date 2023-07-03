@@ -74,7 +74,8 @@ namespace TestFramework
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Element with locator: " + by + " was not foud.");
-                throw;
+                return false;
+
             }
         }
 
