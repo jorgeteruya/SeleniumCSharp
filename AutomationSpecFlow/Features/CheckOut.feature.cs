@@ -112,9 +112,9 @@ this.ScenarioInitialize(scenarioInfo);
                             "LastName",
                             "ZipCode"});
                 table1.AddRow(new string[] {
-                            "Jorge",
-                            "Teruya",
-                            "03277110"});
+                            "Test",
+                            "Tester",
+                            "123456"});
 #line 9
  testRunner.Then("go to checkout page and complete the fields", ((string)(null)), table1, "Then ");
 #line hidden

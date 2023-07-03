@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SolidToken.SpecFlow.DependencyInjection;
+using System.Diagnostics;
 using System.Reflection;
 using TestFramework;
 
@@ -43,6 +45,16 @@ namespace AutomationSpecFlow.Hooks
             }
         }
 
+        static string GetProjectFolderPath()
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string projectFolderPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\..\..\"));
+
+            Console.WriteLine("Caminho do batch file: " + projectFolderPath);
+
+            return projectFolderPath;
+        }
+
         [AfterScenario] 
         public void AfterScenario() 
         {
@@ -51,6 +63,32 @@ namespace AutomationSpecFlow.Hooks
                 _browserHost.DisposeWebDriver();
             }
             catch (Exception ex)
+            {
+                Console.WriteLine($"[Exception message] {ex.Message}");
+            }
+        }
+        
+        [AfterFeature]
+        static void GenerateReport()
+        {
+            try
+            {
+                string projectPath = GetProjectFolderPath();
+
+                string batchFilePath = projectPath + "GenerateReport.bat";
+
+                Process process = new Process();
+                process.StartInfo.FileName = "cmd.exe";
+                process.StartInfo.Arguments = "/c \"" + batchFilePath + "\"";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+
+                process.Start();
+                string output = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+            }
+            catch(Exception ex) 
             {
                 Console.WriteLine($"[Exception message] {ex.Message}");
             }

@@ -76,8 +76,10 @@ namespace AutomationSpecFlow.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("LoginValidation")]
         [NUnit.Framework.CategoryAttribute("LoginTest")]
-        [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce", null)]
-        public void LoginValidation(string user, string password, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce", "True", null)]
+        [NUnit.Framework.TestCaseAttribute("problem_user", "secret_sauce", "True", null)]
+        [NUnit.Framework.TestCaseAttribute("locked_out_user", "secret_sauce", "False", null)]
+        public void LoginValidation(string user, string password, string canAccess, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "LoginTest"};
@@ -89,6 +91,7 @@ namespace AutomationSpecFlow.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("User", user);
             argumentsOfScenario.Add("password", password);
+            argumentsOfScenario.Add("can Access", canAccess);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("LoginValidation", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -110,7 +113,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And(string.Format("input {0}", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.Then("the home page will load", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the home page will load if the user have access", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

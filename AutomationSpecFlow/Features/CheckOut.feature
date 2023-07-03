@@ -7,8 +7,8 @@ Scenario Outline: CheckOut
 	Given I login on sauce labs with user "standard_user"
 	When I select a product
 	Then go to checkout page and complete the fields
-		| FirstName | LastName | ZipCode  |
-		| Jorge     | Teruya   | 03277110 |
+		| FirstName | LastName | ZipCode |
+		| Test      | Tester   | 123456  |
 	
 
 Examples:
