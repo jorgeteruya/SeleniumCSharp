@@ -120,6 +120,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "Test",
                             "Tester",
                             "123456"});
+                table2.AddRow(new string[] {
+                            "Test2",
+                            "Tester",
+                            "123456"});
 #line 12
  testRunner.Then("go to checkout page and complete the fields below", ((string)(null)), table2, "Then ");
 #line hidden
