@@ -2,7 +2,7 @@
 
  Validate users and credentials levels
 
-@LoginTest
+@AccessValidation
 Scenario Outline: LoginValidation
 	Given I access the SauceLabs website
 	When I input the <User>

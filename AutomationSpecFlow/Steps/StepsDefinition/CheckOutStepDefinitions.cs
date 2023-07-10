@@ -1,9 +1,7 @@
+using AutomationSpecFlow.Suport;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using ReportPortal.Client.Models;
-using System;
-using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using TestFramework;
 
 namespace AutomationSpecFlow.Steps.StepsDefinition
@@ -19,26 +17,33 @@ namespace AutomationSpecFlow.Steps.StepsDefinition
 
         }
 
-        [When(@"I select a product")]
-        public void WhenISelectAProduct()
+        [When(@"I select a <Product>")]
+        public void WhenISelectAProduct(Table table)
         {
+
             Driver.Click(By.Id("add-to-cart-sauce-labs-backpack"));
             Driver.Click(By.Id("add-to-cart-sauce-labs-bike-light"));
             Driver.Click(By.Id("add-to-cart-sauce-labs-bolt-t-shirt"));
         }
 
-        [Then(@"go to checkout page and complete the fields")]
-        public void ThenGoToCheckoutPageAndCompleteTheFields(Table table)
+
+        [Then(@"go to checkout page and complete the fields below")]
+        public void ThenGoToCheckoutPageAndCompleteTheFieldsBelow(Table table)
         {
-            foreach (TableRow row in table.Rows)
-            {
-                foreach (string value in row.Values)
-                {
-                    Driver.SendKeys(By.Id("first-name"),value);
-                    Driver.SendKeys(By.Id("last-name"),value);
-                    Driver.SendKeys(By.Id("postal-code"),value);
-                }
-            }
+            var data = table.CreateInstance<Context>();
+
+            string firstName = data.firstName;
+            string lastName = data.lastName;
+            string zipCode = data.zipCode;
+
+            Driver.Click(By.XPath("//div[@id='shopping_cart_container']//a[1]"));
+            Driver.Click(By.Id("checkout"));
+
+            Driver.SendKeys(By.Id("first-name"), firstName);
+            Driver.SendKeys(By.Id("last-name"), lastName);
+            Driver.SendKeys(By.Id("postal-code"), zipCode);
+            Thread.Sleep(2000);
         }
+
     }
 }

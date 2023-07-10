@@ -75,13 +75,12 @@ namespace AutomationSpecFlow.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("CheckOut")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce*01", null)]
+        [NUnit.Framework.CategoryAttribute("ChechOut")]
         [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce*01", null)]
         public void CheckOut(string user, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "tag1"};
+                    "ChechOut"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -104,19 +103,25 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
  testRunner.Given("I login on sauce labs with user \"standard_user\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
- testRunner.When("I select a product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Product"});
+                table1.AddRow(new string[] {
+                            "flashlight"});
+                table1.AddRow(new string[] {
+                            "Backpack"});
+#line 8
+ testRunner.When("I select a <Product>", ((string)(null)), table1, "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "FirstName",
                             "LastName",
                             "ZipCode"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Test",
                             "Tester",
                             "123456"});
-#line 9
- testRunner.Then("go to checkout page and complete the fields", ((string)(null)), table1, "Then ");
+#line 12
+ testRunner.Then("go to checkout page and complete the fields below", ((string)(null)), table2, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
