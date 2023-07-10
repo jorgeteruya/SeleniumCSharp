@@ -28,7 +28,6 @@ namespace AutomationSpecFlow.Steps.CommonSteps
             Driver.SendKeys(By.Id("password"), password);
             Driver.Click(By.Id("login-button"));
 
-            Thread.Sleep(10000);
         }
     }
 }

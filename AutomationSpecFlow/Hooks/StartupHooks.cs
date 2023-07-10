@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SolidToken.SpecFlow.DependencyInjection;
 using System.Diagnostics;
-using System.Reflection;
 using TestFramework;
 
 namespace AutomationSpecFlow.Hooks
@@ -50,8 +49,6 @@ namespace AutomationSpecFlow.Hooks
             string currentDirectory = Directory.GetCurrentDirectory();
             string projectFolderPath = Path.GetFullPath(Path.Combine(currentDirectory, @"..\..\..\..\"));
 
-            Console.WriteLine("Caminho do batch file: " + projectFolderPath);
-
             return projectFolderPath;
         }
 
@@ -67,7 +64,7 @@ namespace AutomationSpecFlow.Hooks
                 Console.WriteLine($"[Exception message] {ex.Message}");
             }
         }
-        
+
         [AfterFeature]
         static void GenerateReport()
         {
@@ -87,6 +84,8 @@ namespace AutomationSpecFlow.Hooks
                 process.Start();
                 string output = process.StandardOutput.ReadToEnd();
                 process.WaitForExit();
+
+                Console.WriteLine("Report Created");
             }
             catch(Exception ex) 
             {

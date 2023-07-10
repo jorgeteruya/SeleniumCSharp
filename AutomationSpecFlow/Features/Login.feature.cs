@@ -75,14 +75,14 @@ namespace AutomationSpecFlow.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("LoginValidation")]
-        [NUnit.Framework.CategoryAttribute("LoginTest")]
+        [NUnit.Framework.CategoryAttribute("AccessValidation")]
         [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce", "True", null)]
         [NUnit.Framework.TestCaseAttribute("problem_user", "secret_sauce", "True", null)]
         [NUnit.Framework.TestCaseAttribute("locked_out_user", "secret_sauce", "False", null)]
         public void LoginValidation(string user, string password, string canAccess, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "LoginTest"};
+                    "AccessValidation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

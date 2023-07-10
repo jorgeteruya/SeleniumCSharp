@@ -11,8 +11,8 @@ dotnet build
 
 echo Generating SpecFlow Living Documentation report...
 
-cd ..\..\GitLab\SeleniumCSharp\AutomationSpecFlow\bin\Debug\net6.0\
+cd ..\..\GitHub\SeleniumCSharp_Master\AutomationSpecFlow\bin\Debug\net6.0\
 
-livingdoc test-assembly AutomationSpecFlow.dll -t TestExecution.json --output C:\Users\jorge\Downloads\MyReport.html
+livingdoc test-assembly AutomationSpecFlow.dll -t TestExecution.json --output C:\Users\jorge\Downloads\MyReportTest.html
 
 echo Report generated successfully!
